@@ -46,7 +46,7 @@ public class CheckerWindow {
 
     public static void setupPanel(JFrame frame) {
         // Header
-        JTextPane textPane = createTextPane("<center><a href=\"https://www.curseforge.com/minecraft/mc-mods/mcpitanlibarch\">MCPitanLib</a> is required to run the following mods.</center>");
+        JTextPane textPane = createTextPane("<center><a href=\"https://www.curseforge.com/minecraft/mc-mods/mcpitanlibarch\">MCPitanLib</a>" + Messages.HEADER + "</center>");
         textPane.addMouseListener(new HyperlinkMouseListener());
         frame.getContentPane().add(textPane, BorderLayout.NORTH);
 
@@ -67,7 +67,7 @@ public class CheckerWindow {
 
         // Footer
         JTextPane footerPane = createTextPane(5, 5, 5, 5);
-        footerPane.setText("<center>Click the Download button to download MCPitanLib and other required files.</center>");
+        footerPane.setText("<center>" + Messages.FOOTER1 + "<br />" + Messages.FOOTER2 + "</center>");
         frame.getContentPane().add(footerPane, BorderLayout.SOUTH);
 
         // Buttons
@@ -79,7 +79,7 @@ public class CheckerWindow {
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         // Download button
-        JButton downloadButton = new JButton("Download");
+        JButton downloadButton = new JButton(Messages.DOWNLOAD_BTN);
         downloadButton.addActionListener(e -> {
             try {
                 DownloadUtil.downloadFromModrinth(MCPitanLibChecker.MCPitanLibProjectID);
@@ -91,7 +91,7 @@ public class CheckerWindow {
 
                 JDialog dialog = new JDialog(frame, "Downloaded MCPitanLib", true);
                 dialog.setLayout(new BorderLayout());
-                dialog.add(new JLabel("MCPitanLib has been downloaded to the mods folder. Please restart Minecraft."), BorderLayout.CENTER);
+                dialog.add(new JLabel(Messages.DOWNLOADED_MSG), BorderLayout.CENTER);
                 dialog.setSize(240, 120);
                 dialog.setLocationRelativeTo(frame);
                 dialog.addWindowListener(new WindowAdapter() {
@@ -107,7 +107,7 @@ public class CheckerWindow {
         });
 
         // Close button
-        JButton closeButton = new JButton("Close");
+        JButton closeButton = new JButton(Messages.CLOSE_BTN);
         closeButton.addActionListener(e -> {
             frame.dispose();
             synchronized (CheckerWindow.class) {
