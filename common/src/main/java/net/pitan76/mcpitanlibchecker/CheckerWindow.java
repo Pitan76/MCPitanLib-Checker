@@ -91,7 +91,8 @@ public class CheckerWindow {
 
                 JDialog dialog = new JDialog(frame, "Downloaded MCPitanLib", true);
                 dialog.setLayout(new BorderLayout());
-                dialog.add(new JLabel(Messages.DOWNLOADED_MSG), BorderLayout.CENTER);
+                JTextPane textPane = createTextPane(Messages.DOWNLOADED_MSG);
+                dialog.getContentPane().add(textPane, BorderLayout.CENTER);
                 dialog.setSize(240, 120);
                 dialog.setLocationRelativeTo(frame);
                 dialog.addWindowListener(new WindowAdapter() {
@@ -100,6 +101,9 @@ public class CheckerWindow {
                         System.exit(0);
                     }
                 });
+                JButton closeButton = new JButton(Messages.CLOSE_BTN);
+                closeButton.addActionListener(e1 -> dialog.dispose());
+                dialog.getContentPane().add(closeButton, BorderLayout.SOUTH);
                 dialog.pack();
                 dialog.setVisible(true);
             } catch (IOException ex) {
