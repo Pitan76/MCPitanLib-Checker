@@ -29,7 +29,7 @@ public class CheckerWindow {
         frame.setSize(360, 240);
         frame.setLocationByPlatform(true);
 
-        setIcon(frame, MCPitanLibChecker.class.getClassLoader().getResourceAsStream("icon.png"));
+        setIcon(frame, MCPitanLibChecker.class.getClassLoader().getResourceAsStream("mcpitanlib_checker_icon.png"));
         setupPanel(frame);
 
         frame.pack();

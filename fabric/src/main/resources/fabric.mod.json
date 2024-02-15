@@ -13,7 +13,7 @@
     "issues": "https://github.com/PTOM76/mcpitanlib-checker/issues"
   },
   "license": "MIT",
-  "icon": "icon.png",
+  "icon": "mcpitanlib_checker_icon.png",
   "environment": "*",
   "provides": [
     "mcpitanlibarch"
