@@ -18,6 +18,9 @@
   "provides": [
     "mcpitanlibarch"
   ],
+  "languageAdapters": {
+    "mcpitanlibchecker_hook": "net.pitan76.mcpitanlibchecker.LanguageAdapterHook"
+  },
   "depends": {
     "fabricloader": "*",
     "minecraft": "*"
