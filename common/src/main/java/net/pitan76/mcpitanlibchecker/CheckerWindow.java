@@ -79,11 +79,17 @@ public class CheckerWindow {
         downloadButton.addActionListener(e -> {
             try {
                 DownloadUtil.downloadFromModrinth(MCPitanLibChecker.MCPitanLibProjectID);
-                JDialog dialog = new JDialog(frame, "Downloaded", true);
+                JDialog dialog = new JDialog(frame, "Downloaded MCPitanLib", true);
                 dialog.setLayout(new BorderLayout());
-                dialog.add(new JLabel("MCPitanLib has been downloaded to the mods folder."), BorderLayout.CENTER);
+                dialog.add(new JLabel("MCPitanLib has been downloaded to the mods folder. Please restart Minecraft."), BorderLayout.CENTER);
                 dialog.setSize(240, 120);
                 dialog.setLocationRelativeTo(frame);
+                dialog.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
                 dialog.setVisible(true);
             } catch (IOException ignored) {}
         });
