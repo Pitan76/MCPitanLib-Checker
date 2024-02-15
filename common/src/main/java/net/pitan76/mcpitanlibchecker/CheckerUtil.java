@@ -3,7 +3,6 @@ package net.pitan76.mcpitanlibchecker;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CheckerUtil {
