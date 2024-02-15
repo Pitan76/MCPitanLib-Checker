@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.Locale;
 
 public class MCPitanLibChecker {
     public static final String MOD_NAME = "MCPitanLib Checker";
@@ -24,7 +23,7 @@ public class MCPitanLibChecker {
         if (FabricLoader.getInstance().isModLoaded(MCPITANLIB_ID)) return;
 
         try {
-            if (System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac") || GraphicsEnvironment.isHeadless() || FORCE_CONSOLE) {
+            if (GraphicsEnvironment.isHeadless() || FORCE_CONSOLE) {
                 CheckerConsole.run();
             } else {
                 CheckerWindow.run();

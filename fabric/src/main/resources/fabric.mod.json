@@ -19,7 +19,7 @@
     "mcpitanlibarch"
   ],
   "languageAdapters": {
-    "mcpitanlibchecker_hook": "net.pitan76.mcpitanlibchecker.LanguageAdapterHook"
+    "mcpitanlibchecker_hook": "net.pitan76.mcpitanlibchecker.fabric.LanguageAdapterHook"
   },
   "depends": {
     "fabricloader": "*",
