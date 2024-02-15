@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "mcpitanlib_checker",
+  "version": "${version}",
+  "name": "MCPitanLib Checker",
+  "description": "Check if installed required mods",
+  "authors": [
+    "Pitan"
+  ],
+  "contact": {
+    "website": "https://www.curseforge.com/minecraft/mc-mods/mcpitanlib-checker",
+    "repo": "https://github.com/PTOM76/mcpitanlib-checker",
+    "issues": "https://github.com/PTOM76/mcpitanlib-checker/issues"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "provides": [
+    "mcpitanlibarch"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [
+        "library"
+      ]
+    }
+  }
+}
