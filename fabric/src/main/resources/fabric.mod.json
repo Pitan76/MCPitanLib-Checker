@@ -16,7 +16,8 @@
   "icon": "mcpitanlib_checker_icon.png",
   "environment": "*",
   "provides": [
-    "mcpitanlibarch"
+    "mcpitanlibarch",
+    "mcpitanlib"
   ],
   "languageAdapters": {
     "mcpitanlibchecker_hook": "net.pitan76.mcpitanlibchecker.fabric.LanguageAdapterHook"
