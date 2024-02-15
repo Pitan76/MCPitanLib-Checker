@@ -19,6 +19,10 @@ public class MCPitanLibChecker {
 
     public static final boolean FORCE_CONSOLE = Boolean.getBoolean("mcpitanlibchecker.console");
 
+    public static void main(String[] args) {
+        init();
+    }
+
     public static void init() {
         if (FabricLoader.getInstance().isModLoaded(MCPITANLIB_ID)) return;
 

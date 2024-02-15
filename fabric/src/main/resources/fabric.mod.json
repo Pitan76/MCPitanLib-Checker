@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "mcpitanlib_checker",
-  "version": "${version}",
+  "version": "100.${version}",
   "name": "MCPitanLib Checker",
   "description": "Check if installed required mods",
   "authors": [

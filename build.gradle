@@ -21,7 +21,6 @@ subprojects {
     }
 
     repositories {
-        maven { url "https://maven.shedaniel.me/" }
         maven { url "https://maven.pitan76.net/" }
     }
 
