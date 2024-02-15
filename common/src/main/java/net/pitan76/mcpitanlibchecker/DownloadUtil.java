@@ -30,7 +30,7 @@ public class DownloadUtil {
 
         JsonObject file = latestVersion.get("files").getAsJsonArray().get(0).getAsJsonObject();
         String downloadUrl = file.get("url").getAsString();
-        String fileName = file.get("name").getAsString();
+        String fileName = file.get("filename").getAsString();
 
         Path filePath = MCPitanLibChecker.getGameDir().resolve("mods").resolve(fileName);
 

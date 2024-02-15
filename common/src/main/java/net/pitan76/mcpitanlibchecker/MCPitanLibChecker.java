@@ -18,6 +18,8 @@ public class MCPitanLibChecker {
     public static final String MOD_ID = "mcpitanlib_checker";
     public static final String MCPITANLIB_IMPL_ID = "mcpitanlib-impl";
     public static final String MCPitanLibProjectID = "mcpitanlibarch";
+    public static final String ArchitecturyAPIProjectID = "architectury-api";
+    public static final String FabricAPIProjectID = "fabric-api";
 
     public static Logger LOGGER = LogManager.getLogger();
     public static void log(Level level, String message){

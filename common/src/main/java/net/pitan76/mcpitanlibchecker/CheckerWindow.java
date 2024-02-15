@@ -8,7 +8,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +65,11 @@ public class CheckerWindow {
         }
         frame.getContentPane().add(modsPane, BorderLayout.CENTER);
 
+        // Footer
+        JTextPane footerPane = createTextPane(5, 5, 5, 5);
+        footerPane.setText("<center>Click the Download button to download MCPitanLib and other required files.</center>");
+        frame.getContentPane().add(footerPane, BorderLayout.SOUTH);
+
         // Buttons
         JPanel btnPanel = getBtnPanel(frame);
         frame.getContentPane().add(btnPanel, BorderLayout.SOUTH);
@@ -79,6 +83,12 @@ public class CheckerWindow {
         downloadButton.addActionListener(e -> {
             try {
                 DownloadUtil.downloadFromModrinth(MCPitanLibChecker.MCPitanLibProjectID);
+                if (! MCPitanLibChecker.isModLoaded("architectury"))
+                    DownloadUtil.downloadFromModrinth(MCPitanLibChecker.ArchitecturyAPIProjectID);
+                if (MCPitanLibChecker.loader.equalsIgnoreCase("fabric")
+                        && !MCPitanLibChecker.isModLoaded("fabric"))
+                    DownloadUtil.downloadFromModrinth(MCPitanLibChecker.FabricAPIProjectID);
+
                 JDialog dialog = new JDialog(frame, "Downloaded MCPitanLib", true);
                 dialog.setLayout(new BorderLayout());
                 dialog.add(new JLabel("MCPitanLib has been downloaded to the mods folder. Please restart Minecraft."), BorderLayout.CENTER);
@@ -91,7 +101,9 @@ public class CheckerWindow {
                     }
                 });
                 dialog.setVisible(true);
-            } catch (IOException ignored) {}
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
 
         // Close button
