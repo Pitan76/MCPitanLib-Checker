@@ -11,6 +11,6 @@ public class LanguageAdapterHook implements LanguageAdapter {
     }
 
     static {
-        MCPitanLibChecker.init();
+        MCPitanLibChecker.init("fabric");
     }
 }

@@ -12,6 +12,6 @@ public class MCPitanLibCheckerForge {
     }
 
     public void onClientSetup(final FMLClientSetupEvent e) {
-        MCPitanLibChecker.init();
+        MCPitanLibChecker.init("forge");
     }
 }

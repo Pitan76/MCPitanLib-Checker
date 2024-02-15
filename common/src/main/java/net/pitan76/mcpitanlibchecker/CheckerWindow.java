@@ -1,7 +1,5 @@
 package net.pitan76.mcpitanlibchecker;
 
-import org.jetbrains.annotations.NotNull;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,6 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,45 +28,94 @@ public class CheckerWindow {
             }
         });
         frame.setSize(360, 240);
-        InputStream iconInputStream = MCPitanLibChecker.class.getClassLoader().getResourceAsStream("icon.png");
-        if (iconInputStream != null) {
-            try {
-                frame.setIconImage(ImageIO.read(iconInputStream));
-            } catch (IOException ignored) {}
-        }
         frame.setLocationByPlatform(true);
+
+        setIcon(frame, MCPitanLibChecker.class.getClassLoader().getResourceAsStream("icon.png"));
+        setupPanel(frame);
+
+        frame.pack();
         frame.setVisible(true);
+        frame.requestFocus();
+        synchronized (CheckerWindow.class) {
+            try {
+                CheckerWindow.class.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-        JTextPane textPane = getjTextPane();
-
+    public static void setupPanel(JFrame frame) {
+        // Header
+        JTextPane textPane = createTextPane("<center><a href=\"https://www.curseforge.com/minecraft/mc-mods/mcpitanlibarch\">MCPitanLib</a> is required to run the following mods.</center>");
+        textPane.addMouseListener(new HyperlinkMouseListener());
         frame.getContentPane().add(textPane, BorderLayout.NORTH);
 
-        JLabel modsLabel = new JLabel();
+        // Mods
+        JTextPane modsPane = createTextPane();
         List<String> modNames = new ArrayList<>();
         List<String> modIds = CheckerUtil.getListDependents(modNames);
         if (!modIds.isEmpty()) {
             StringBuilder sb = new StringBuilder();
+            sb.append("<ul>");
             for (String modName : modNames) {
-                sb.append(modName).append("\n");
+                sb.append("<li>").append(modName).append("</li>");
             }
-            modsLabel.setText(sb.toString());
+            sb.append("</ul>");
+            modsPane.setText(sb.toString());
         }
-        textPane.insertComponent(modsLabel);
+        frame.getContentPane().add(modsPane, BorderLayout.CENTER);
 
-
+        // Buttons
+        JPanel btnPanel = getBtnPanel(frame);
+        frame.getContentPane().add(btnPanel, BorderLayout.SOUTH);
     }
 
-    @NotNull
-    private static JTextPane getjTextPane() {
+    private static JPanel getBtnPanel(JFrame frame) {
+        JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
+        // Download button
+        JButton downloadButton = new JButton("Download");
+        downloadButton.addActionListener(e -> {
+            try {
+                DownloadUtil.downloadFromModrinth(MCPitanLibChecker.MCPitanLibProjectID);
+            } catch (IOException ignored) {}
+        });
+
+        // Close button
+        JButton closeButton = new JButton("Close");
+        closeButton.addActionListener(e -> {
+            frame.dispose();
+            synchronized (CheckerWindow.class) {
+                CheckerWindow.class.notify();
+            }
+        });
+
+        btnPanel.add(downloadButton);
+        btnPanel.add(closeButton);
+        return btnPanel;
+    }
+
+    public static JTextPane createTextPane() {
         JTextPane textPane = new JTextPane();
         textPane.setContentType("text/html");
         textPane.setEditable(false);
         textPane.setBackground(null);
         textPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        textPane.setText("<center>MCPitanLib is required to run the following mods.</center>");
         textPane.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
         textPane.setFont(FONT);
+        return textPane;
+    }
+
+    public static JTextPane createTextPane(int top, int left, int bottom, int right) {
+        JTextPane textPane = createTextPane();
+        textPane.setBorder(new EmptyBorder(top, left, bottom, right));
+        return textPane;
+    }
+
+    public static JTextPane createTextPane(String text) {
+        JTextPane textPane = createTextPane();
+        textPane.setText(text);
         return textPane;
     }
 
@@ -91,5 +139,13 @@ public class CheckerWindow {
 
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ignored) {}
+    }
+
+    public static void setIcon(JFrame frame, InputStream inputStream) {
+        if (inputStream != null) {
+            try {
+                frame.setIconImage(ImageIO.read(inputStream));
+            } catch (IOException ignored) {}
+        }
     }
 }
