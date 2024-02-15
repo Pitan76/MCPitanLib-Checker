@@ -100,6 +100,7 @@ public class CheckerWindow {
                         System.exit(0);
                     }
                 });
+                dialog.pack();
                 dialog.setVisible(true);
             } catch (IOException ex) {
                 ex.printStackTrace();

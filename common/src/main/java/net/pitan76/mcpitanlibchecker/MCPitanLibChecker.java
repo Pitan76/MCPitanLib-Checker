@@ -38,6 +38,8 @@ public class MCPitanLibChecker {
         loader = loader1;
         if (isModLoaded(MCPITANLIB_IMPL_ID)) return;
 
+        Messages.init();
+
         try {
             if (GraphicsEnvironment.isHeadless() || FORCE_CONSOLE) {
                 CheckerConsole.run();
