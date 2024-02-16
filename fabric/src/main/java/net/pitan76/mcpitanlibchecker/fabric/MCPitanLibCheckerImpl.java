@@ -12,4 +12,8 @@ public class MCPitanLibCheckerImpl {
     public static Path getGameDir() {
         return FabricLoader.getInstance().getGameDir();
     }
+
+    public static String getMinecraftVersion() {
+        return FabricLoader.getInstance().getModContainer("minecraft").get().getMetadata().getVersion().getFriendlyString();
+    }
 }

@@ -33,6 +33,8 @@ public class CheckerConsole {
                         && !MCPitanLibChecker.isModLoaded("fabric"))
                     DownloadUtil.downloadFromModrinth(MCPitanLibChecker.FabricAPIProjectID);
 
+                MCPitanLibChecker.extraCheck();
+
                 System.out.println(Messages.DOWNLOADED_MSG);
             }
         } catch (Exception e) {

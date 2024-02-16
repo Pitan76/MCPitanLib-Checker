@@ -89,6 +89,8 @@ public class CheckerWindow {
                         && !MCPitanLibChecker.isModLoaded("fabric"))
                     DownloadUtil.downloadFromModrinth(MCPitanLibChecker.FabricAPIProjectID);
 
+                MCPitanLibChecker.extraCheck();
+
                 JDialog dialog = new JDialog(frame, "Downloaded MCPitanLib", true);
                 dialog.setLayout(new BorderLayout());
                 JTextPane textPane = createTextPane(Messages.DOWNLOADED_MSG);

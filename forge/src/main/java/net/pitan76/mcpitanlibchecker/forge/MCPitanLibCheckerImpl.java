@@ -13,4 +13,8 @@ public class MCPitanLibCheckerImpl {
     public static Path getGameDir() {
         return FMLPaths.GAMEDIR.get();
     }
+
+    public static String getMinecraftVersion() {
+        return ModList.get().getModContainerById("minecraft").get().getModInfo().getVersion().toString();
+    }
 }

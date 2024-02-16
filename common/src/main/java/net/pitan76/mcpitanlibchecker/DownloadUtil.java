@@ -21,7 +21,7 @@ public class DownloadUtil {
         System.out.println("Downloading MCPitanLib...");
 
         // Download the file from the URL
-        final URL url = new URL("https://api.modrinth.com/v2/project/" + projectId + "/version?game_versions=[%22" + SharedConstants.VERSION_NAME + "%22]&loaders=[%22" + MCPitanLibChecker.loader + "%22]");
+        final URL url = new URL("https://api.modrinth.com/v2/project/" + projectId + "/version?game_versions=[%22" + MCPitanLibChecker.getMinecraftVersion() + "%22]&loaders=[%22" + MCPitanLibChecker.loader + "%22]");
         JsonArray res = gson.fromJson(new InputStreamReader(url.openStream()), JsonArray.class);
 
         JsonObject latestVersion = res.get(0).getAsJsonObject();

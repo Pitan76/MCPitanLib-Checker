@@ -2,11 +2,13 @@ package net.pitan76.mcpitanlibchecker;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.SharedConstants;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.io.IOException;
 import java.nio.file.Path;
 
 /**
@@ -51,6 +53,16 @@ public class MCPitanLibChecker {
         }
     }
 
+    public static void extraCheck() {
+        if (isModLoaded("additionalsmallstairs") && !isModLoaded("smallstairs")) {
+            try {
+                DownloadUtil.downloadFromModrinth("small-stairs119");
+            } catch (IOException e) {
+                LOGGER.error("(Extra Check) Failed to download Small Stairs: " + e.getMessage());
+            }
+        }
+    }
+
     @ExpectPlatform
     public static boolean isModLoaded(String modid) {
         return true;
@@ -59,5 +71,10 @@ public class MCPitanLibChecker {
     @ExpectPlatform
     public static Path getGameDir() {
         return FabricLoader.getInstance().getGameDir();
+    }
+
+    @ExpectPlatform
+    public static String getMinecraftVersion() {
+        return SharedConstants.VERSION_NAME;
     }
 }
