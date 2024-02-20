@@ -17,7 +17,8 @@
   "environment": "*",
   "provides": [
     "mcpitanlibarch",
-    "mcpitanlib"
+    "mcpitanlib",
+    "smallstairs"
   ],
   "languageAdapters": {
     "mcpitanlibchecker_hook": "net.pitan76.mcpitanlibchecker.fabric.LanguageAdapterHook"

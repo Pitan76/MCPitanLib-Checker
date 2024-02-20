@@ -54,7 +54,7 @@ public class MCPitanLibChecker {
     }
 
     public static void extraCheck() {
-        if (isModLoaded("additionalsmallstairs") && !isModLoaded("smallstairs")) {
+        if (isModLoaded("additionalsmallstairs") && !isModLoaded("smallstairs-impl")) {
             try {
                 DownloadUtil.downloadFromModrinth("small-stairs119");
             } catch (IOException e) {
