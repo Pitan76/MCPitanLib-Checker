@@ -45,10 +45,12 @@ public class CheckerWindow {
     }
 
     public static void setupPanel(JFrame frame) {
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
         // Header
         JTextPane textPane = createTextPane("<center><a href=\"https://www.curseforge.com/minecraft/mc-mods/mcpitanlibarch\">MCPitanLib</a>" + Messages.HEADER + "</center>");
         textPane.addMouseListener(new HyperlinkMouseListener());
-        frame.getContentPane().add(textPane, BorderLayout.NORTH);
+        mainPanel.add(textPane, BorderLayout.NORTH);
 
         // Mods
         JTextPane modsPane = createTextPane();
@@ -63,16 +65,23 @@ public class CheckerWindow {
             sb.append("</ul>");
             modsPane.setText(sb.toString());
         }
-        frame.getContentPane().add(modsPane, BorderLayout.CENTER);
+        mainPanel.add(modsPane, BorderLayout.CENTER);
+
+        // Footer and Buttons container
+        JPanel bottomPanel = new JPanel(new BorderLayout());
 
         // Footer
         JTextPane footerPane = createTextPane(5, 5, 5, 5);
         footerPane.setText("<center>" + Messages.FOOTER1 + "<br />" + Messages.FOOTER2 + "</center>");
-        frame.getContentPane().add(footerPane, BorderLayout.SOUTH);
+        bottomPanel.add(footerPane, BorderLayout.CENTER);
 
         // Buttons
         JPanel btnPanel = getBtnPanel(frame);
-        frame.getContentPane().add(btnPanel, BorderLayout.SOUTH);
+        bottomPanel.add(btnPanel, BorderLayout.SOUTH);
+
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+
+        frame.getContentPane().add(mainPanel);
     }
 
     private static JPanel getBtnPanel(JFrame frame) {
@@ -130,6 +139,8 @@ public class CheckerWindow {
         textPane.setContentType("text/html");
         textPane.setEditable(false);
         textPane.setBackground(null);
+        textPane.setOpaque(false);
+        textPane.setMargin(new Insets(5, 5, 5, 5));
         textPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         textPane.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
         textPane.setFont(FONT);
@@ -138,6 +149,7 @@ public class CheckerWindow {
 
     public static JTextPane createTextPane(int top, int left, int bottom, int right) {
         JTextPane textPane = createTextPane();
+        textPane.setMargin(new Insets(top, left, bottom, right));
         textPane.setBorder(new EmptyBorder(top, left, bottom, right));
         return textPane;
     }
