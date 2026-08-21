@@ -4,7 +4,6 @@ MCPitanLibやその他前提MODが入っているか、また、前提MODをダ�
 
 ### ダウンロードできる前提MOD
 - MCPitanLib
-- Architectury API
 - Small Stairs (Additional Small Stairs)
 
 ### 使い方
@@ -34,7 +33,6 @@ You can check if MCPitanLib and other prerequisite MODs are installed, and you c
 
 ### Prerequisite MODs that can be downloaded
 - MCPitanLib
-- Architectury API
 - Small Stairs (Additional Small Stairs)
 
 ### How to use

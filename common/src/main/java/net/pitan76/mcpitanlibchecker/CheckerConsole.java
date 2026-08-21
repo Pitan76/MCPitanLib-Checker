@@ -27,8 +27,6 @@ public class CheckerConsole {
 
             if (input.equalsIgnoreCase("Y")) {
                 DownloadUtil.downloadFromModrinth(MCPitanLibChecker.MCPitanLibProjectID);
-                if (! MCPitanLibChecker.isModLoaded("architectury"))
-                    DownloadUtil.downloadFromModrinth(MCPitanLibChecker.ArchitecturyAPIProjectID);
                 if (MCPitanLibChecker.loader.equalsIgnoreCase("fabric")
                         && !MCPitanLibChecker.isModLoaded("fabric"))
                     DownloadUtil.downloadFromModrinth(MCPitanLibChecker.FabricAPIProjectID);

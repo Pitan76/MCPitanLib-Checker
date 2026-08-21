@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Main class of MCPitanLib Checker
+ * Main class of MCPitanLib Checkerf
  * Reference: <a href="https://github.com/wisp-forest/owo-lib/">owo-lib</a>
  */
 public class MCPitanLibChecker {
@@ -20,7 +20,6 @@ public class MCPitanLibChecker {
     public static final String MOD_ID = "mcpitanlib_checker";
     public static final String MCPITANLIB_IMPL_ID = "mcpitanlib-impl";
     public static final String MCPitanLibProjectID = "mcpitanlibarch";
-    public static final String ArchitecturyAPIProjectID = "architectury-api";
     public static final String FabricAPIProjectID = "fabric-api";
 
     public static Logger LOGGER = LogManager.getLogger();

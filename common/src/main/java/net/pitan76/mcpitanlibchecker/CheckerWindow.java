@@ -92,8 +92,6 @@ public class CheckerWindow {
         downloadButton.addActionListener(e -> {
             try {
                 DownloadUtil.downloadFromModrinth(MCPitanLibChecker.MCPitanLibProjectID);
-                if (! MCPitanLibChecker.isModLoaded("architectury"))
-                    DownloadUtil.downloadFromModrinth(MCPitanLibChecker.ArchitecturyAPIProjectID);
                 if (MCPitanLibChecker.loader.equalsIgnoreCase("fabric")
                         && !MCPitanLibChecker.isModLoaded("fabric"))
                     DownloadUtil.downloadFromModrinth(MCPitanLibChecker.FabricAPIProjectID);
